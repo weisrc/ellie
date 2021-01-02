@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{query}} - Ellie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+    <link rel="icon" href="/static/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        .pacifico {
+            font-family: 'Pacifico', cursive
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light mb-4 sticky-top">
+        <div class="container">
+            <form class="w-100" autocomplete="off" spellcheck="false">
+                <div class="d-flex">
+                    <a><img class="me-2" src="static/logo.png" height="40" alt="">
+                        <span class="text-primary pacifico position-absolute" style="margin-left:-20px; margin-top: 20px;">
+                            {{lang}}
+                        </span>
+                    </a>
+                    <input class="form-control me-2 rounded-pill" placeholder="Search" name="q" value="{{query}}">
+                    <button class="btn btn-outline-success rounded-pill pacifico" type="submit">Search</button>
+                </div>
+
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        {%for result in results%}
+        <div class="mb-4">
+            <small class="text-muted">{{result.url[:100]}}</small>
+            <div class="w-100">
+                <a class="mb-1 h6" href="{{result.url}}">{{result.title}}</a>
+                <br>
+                {% if result.alexa_rank%}
+                <div class="badge text-light rounded-pill" style="background: hsl(120, {{[50,100000/result.alexa_rank]|min}}%, 50%)">Rank {{result.alexa_rank}}</div>
+                {% else %}
+                <div class="badge text-light rounded-pill" style="background: hsl(120, 0%, 50%)">Unranked</div>
+                {%endif%}
+                {% if result.popularity%}
+                <div class="badge text-light rounded-pill" style="background: hsl(120, {{result.popularity/2}}%, 50%);">Popular</div>
+                {%endif%}
+
+                {% if result.child_safety%}
+                <div class="badge text-light rounded-pill" style="background: hsl(120, {{result.child_safety/2}}%, 50%);">Safe</div>
+                {%endif%}
+
+                {% if result.trust%}
+                <div class="badge text-light rounded-pill" style="background: hsl(120, {{result.trust/2}}%, 50%);">Reliable</div>
+                {%endif%}
+
+                {% if result.privacy%}
+                <div class="badge text-light rounded-pill" style="background: hsl(120, {{result.privacy/2}}%, 50%);">Privacy</div>
+                {%endif%}
+            </div>
+            <p class="mb-1 small text-muted">{{result.description}}</p>
+
+        </div>
+        {%endfor%}
+        <h5 class="pacifico">Not seeing what your were looking for?</h5>
+        <p>Ellie search engine is fairly new so please help Ellie grow and know the web better by setting Ellie off to an expedition in the web. Thank you!</p>
+        <form action="/explore" class="mb-5">
+            <input style="display: none;" value="{{query}}" name="q">
+            <button type="submit" class="btn btn-success rounded-pill pacifico">Ellie explore!</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

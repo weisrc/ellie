@@ -1,0 +1,13 @@
+flask
+numpy
+tensorflow
+tensorflow_text
+tensorflow_hub
+scipy
+scikit-learn
+lxml
+httpx
+shortuuid
+fasttext
+# CFLAGS="-Wno-narrowing" pip install multi-rake
+# multi_rake
