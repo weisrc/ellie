@@ -28,6 +28,11 @@ def index():
         return render_template("results.html", **ctx)
     return render_template("index.html")
 
+@app.route("/count")
+def count():
+    count = engine.db.exe("select count(*) from sites").fetchone()[0]
+    return f"There are {count} sites saved right now."
+
 
 @app.route("/explore")
 @async_action
