@@ -1,4 +1,4 @@
-FROM continuumio/miniconda
+FROM continuumio/miniconda3
 
 WORKDIR /usr/src/ellie
 
