@@ -1,27 +1,12 @@
 import sqlite3
 import threading
-import datetime
-
-lock = threading.Lock()
 
 conn = sqlite3.connect("data/.db", check_same_thread=False)
 
-c = conn.cursor()
-
-# mtc = conn.cursor()
-
-
-# def mtexe(sql, *params):
-#     lock.acquire(True)
-#     results = mtc.execute(sql, *params)
-#     lock.release()
-#     return results
-
 
 def exe(sql, *params):
-    # lock.acquire()
+    c = conn.cursor()
     c.execute(sql, *params)
-    # lock.release()
     return c
 
 
