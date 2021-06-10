@@ -29,7 +29,7 @@ More in `src/requirements`
 Your file tree should look like...
 ```sh
 src/models
-├── fasttext.ftz # fastext model
+├── fasttext.ftz # fasttext model
 └── use # universal sentence encoder model
     ├── assets
     ├── saved_model.pb
