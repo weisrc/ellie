@@ -1,7 +1,7 @@
 # Ellie
  Little search engine made with Tensorflow.
 
- The online hosted version will hopefully be available [here](https://ellie.weis.studio).
+ The online hosted version will hopefully be available [here](https://ellie.weis.studio). Nope, not anymore sadly ;(
 
 ## Getting started
 
